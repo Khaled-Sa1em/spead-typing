@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +41,99 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.container {
+  position: relative;
+  height: 100vh;
+  padding: 1em;
+  transition: background .6s;
+}
+
+.dark-theme {
+  background: rgb(41, 41, 61);
+}
+
+.dark-theme .txt {
+  color: white;
+}
+
+.light-theme {
+  background: rgb(180, 180, 188);
+  color: rgb(5, 5, 5);
+}
+
+.light-theme .txt {
+  color: rgb(5, 5, 5);
+}
+
+.raw {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 1em;
+}
+
+.container .textArea {
+  resize: none;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  padding: 10px;
+  width: 20em;
+  max-width: 100%;
+  line-height: 1.5;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px #999;
+  min-height: 50vh;
+}
+
+.container .textArea:disabled {
+  background: rgba(255, 0, 0, 0.328);
+}
+
+.txt {
+  text-transform: capitalize;
+}
+
+.title {
+  border-bottom: 2px solid red;
+  padding-bottom: 0.5em;
+}
+
+.btn {
+  background-color: #4caf50; /* Green */
+  border: 2px solid #4caf50; /* Green */
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  transform: scale(1);
+  transition: background 0.5s, transform 0.3s, font-size 0.3s;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  background: rgb(200, 191, 191);
+  color: black;
+  border: 2px solid #4caf50; /* Green */
+}
+
+.btn:active {
+  transform: scale(0.9);
+  font-size: 15px;
+}
+
+.theme-btn {
+  background: transparent;
+  border: none;
+  position: absolute;
+  cursor: pointer;
+  top: 2em;
+  right: 2em;
 }

@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useRef, useEffect } from 'react'
+// my speed typing game hook
+import useSpeedTypingGame from './Hooks/useSpeedTypingGame'
+import './App.css'
 
 function App() {
+  // speed typing game hook
+  const {
+    isDark,
+    wordsCount,
+    changeTheme,
+    startTyping,
+    isStarted,
+    isDisabled,
+    words,
+    textAreaRef,
+    typingHandle,
+    isTimeRemaining,
+  } = useSpeedTypingGame(10)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div
+        className={
+          isDark ? 'container raw dark-theme' : 'container raw light-theme'
+        }
+      >
+        <button className="theme-btn" onClick={changeTheme}>
+          {isDark ? '☀️' : '🌑'}
+        </button>
+        <h1 className="txt title">Typing speed</h1>
+        <textarea
+          disabled={isDisabled}
+          className="textArea"
+          value={words}
+          ref={textAreaRef}
+          onChange={typingHandle}
+        />
+        <p className="txt">Remaining time : {isTimeRemaining}</p>
+        <button onClick={startTyping} className="btn">
+          {!isStarted ? 'Start' : 'Stop'}
+        </button>
+        <p className="txt">words Count : {wordsCount} </p>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
